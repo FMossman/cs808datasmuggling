@@ -13,6 +13,7 @@ message = ' '.join(format(ord(x), 'b') for x in message)
 with open("sample.bmp", "rb") as imageFile:
     f = imageFile.read()
     b = bytearray(f)
+    
 
 # BMP Header size (start of pixel data)
 BMP_Header_End = 54

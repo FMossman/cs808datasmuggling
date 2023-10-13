@@ -1,7 +1,7 @@
 
 from PIL import Image
 
-im = Image.open("cocktail_24bit.bmp")
+im = Image.open("sample.bmp")
 
 
 def convert_to_binary(text):
@@ -44,8 +44,11 @@ print(f"The number of pixels required to hide the message is {pixels_required}")
 
 # puts the information from each pixel into a list
 pixels = list(im.getdata())
+
+
 # use splice to have a list of just the pixels required for hiding message
 needed_pixels = pixels[:pixels_required]
+print(needed_pixels)
 
 
 # creates a empty list for adding pixel information in integers to
@@ -62,7 +65,7 @@ for i in range(0, pixels_required):
             
 print("This is the cover image pixels as integers")
 print(pixel_list)
-
+quit()
 
 #each bit in the message
 for bit in range(0, message_length):
