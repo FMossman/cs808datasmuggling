@@ -54,7 +54,14 @@ def compare_LSB(message_bit, least_sig_bit):
             return False
 
 
-message = 'fi'
+
+mode = ''
+while mode != 'h' or mode != 'r':
+      mode = input("Would you like to hide (h) a message in an image or retreive (r) a message from a picture? ( h or r )")
+      print(mode)
+
+
+message = input('Enter your text for encoding: ')
 binary_message = convert_to_binary(message)
 message_length = len(binary_message)
 pixels_required = find_pixels_needed(message_length)
@@ -66,7 +73,7 @@ pixels = list(im.getdata())
 
 while len(pixels) < pixels_required:
       print("The message is too long to hide!")
-
+      #cancel program
 # use splice to have a list of just the pixels required for hiding message
 needed_pixels = pixels[:pixels_required]
 
