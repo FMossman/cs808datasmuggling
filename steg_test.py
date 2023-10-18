@@ -66,16 +66,17 @@ binary_message = convert_to_binary(message)
 message_length = len(binary_message)
 pixels_required = find_pixels_needed(message_length)
 
-im = Image.open("cocktail_24bit.bmp")
+img = Image.open("cocktail_24bit.bmp")
 
 # puts the tuple information from each pixel into a list
-pixels = list(im.getdata())
+all_pixels = list(img.getdata())
 
-while len(pixels) < pixels_required:
+while len(all_pixels) < pixels_required:
       print("The message is too long to hide!")
-      #cancel program
+      # could this be changed to ask for message again?
+      quit()
 # use splice to have a list of just the pixels required for hiding message
-needed_pixels = pixels[:pixels_required]
+needed_pixel = all_pixels[:pixels_required]
 
 # get the pixel information as lists of integers
 pixel_list = get_pixel_ints(pixels_required, needed_pixels)
@@ -100,7 +101,7 @@ for pixel in pixel_list:
 
 
 # add coded pixels back into image
-im.putdata(pixel_tuples)
+img.putdata(pixel_tuples)
 
 # save the steg image
-im.save('outputimage.bmp')
+img.save('outputimage.bmp')

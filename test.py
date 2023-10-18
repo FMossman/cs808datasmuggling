@@ -17,7 +17,7 @@ def find_pixels_needed(message_length):
             pixels_needed = (message_length // 3) + 1
       return pixels_needed
 
-
+"""
 def get_pixel_ints(pixels_required, needed_pixels):
       # converts the pixels in tuples to lists of integers
       pixel_list = []
@@ -25,7 +25,7 @@ def get_pixel_ints(pixels_required, needed_pixels):
             color_values = list(needed_pixels[i])
             pixel_list.append(color_values)
       return pixel_list
-
+"""
 
 def change_lsb(pixel_list, message):
 
@@ -73,8 +73,10 @@ while True:
       message = input('Enter your text for encoding: ')
 
       binary_message = convert_to_binary(message)
+      print(binary_message)
       message_length = len(binary_message)
       required_pxls = find_pixels_needed(message_length)
+      print(required_pxls)
 
       if len(original_pxls) < required_pxls:
             print("The message is too long to hide!")
@@ -87,7 +89,9 @@ pxls_to_modify = original_pxls[:required_pxls]
 pxls_to_modify = [list(ele) for ele in pxls_to_modify]
 
 modified_pixels = change_lsb(pxls_to_modify, binary_message)
+print(modified_pixels)
 
+# Do we need this? I thought putdata starts adding from the first pixel and stops when the list runs out?
 modified_img = modified_pixels + original_pxls[required_pxls:]
 
 modified_img = [tuple(ele) for ele in modified_img]
@@ -98,3 +102,5 @@ img.putdata(modified_img)
 
 # # save the steg image
 img.save('outputimage1234.bmp')
+
+
