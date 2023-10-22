@@ -1,6 +1,8 @@
 from PIL import Image
 
 
+#If message length in binary is over 999, need to say it's too long
+
 def convert_to_binary(text):
       """converts string to binary
 
@@ -58,6 +60,7 @@ def store_len_in_pxl(msg_len, pxl_to_modify):
             store_len_in_pxl(16, [37, 37, 35]) -> [30, 31, 36] \n
             store_len_in_pxl(8, [37, 37, 35]) -> [30, 30, 38]
       """
+      # should it be returning a tuple in the example (30, 30, 38)
 
       pxl = []
       msg_len = f'{msg_len:03}'  # pad out the int to 3 digits (16 -> 016)
@@ -141,9 +144,11 @@ while True:
 
       msg_len = len(binary_msg)
 
-      required_pxls = find_pixels_needed(len(binary_msg)) + 1  # one extra pixel used to store length of the message
+      required_pxls = find_pixels_needed(msg_len) + 1  # one extra pixel used to store length of the message
       
       if len(original_pxls) < required_pxls:
+            print("The message is too long to hide!")
+      elif msg_len > 999:
             print("The message is too long to hide!")
       else:
             break
@@ -162,6 +167,13 @@ modified_pxls = change_lsb(pxls_to_modify, binary_msg)
 # convert modified pixels back to list of tuples
 modified_pxls = [tuple(x) for x in modified_pxls]
 modified_pxls = [first_pxl] + modified_pxls
+
+# testing
+print(f'Message in binary: {binary_msg}')
+print(f'Orginal pixels: {pxls_to_modify}')
+print(f'Length of message pixel: {first_pxl}')
+print(f'List of changed pixels: {modified_pxls}')
+
 
 
 # add coded pixels back into image
