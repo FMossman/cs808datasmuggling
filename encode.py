@@ -60,7 +60,7 @@ def store_len_in_pxl(msg_len, pxl_to_modify):
             store_len_in_pxl(16, [37, 37, 35]) -> [30, 31, 36] \n
             store_len_in_pxl(8, [37, 37, 35]) -> [30, 30, 38]
       """
-      # should it be returning a tuple in the example (30, 30, 38)
+
 
       pxl = []
       msg_len = f'{msg_len:03}'  # pad out the int to 3 digits (16 -> 016)
