@@ -47,7 +47,8 @@ def change_lsb(pixel_list, message):
     Returns:
         list: list of lists which contains the modified pixels with binary message
     Example:
-        change_lsb([[37, 37, 35], [37, 37, 35], [37, 37, 35], [38, 38, 36]], '01101000') -> [[36, 37, 35], [36, 37, 34], [36, 36, 36], [38, 38, 36]]
+        change_lsb([[37, 37, 35], [37, 37, 35], [37, 37, 35], [38, 38, 36]], '01101000') 
+        -> [[36, 37, 35], [36, 37, 34], [36, 36, 36], [38, 38, 36]]
     """
 
     binary_message = [int(x) for x in str(message)]
