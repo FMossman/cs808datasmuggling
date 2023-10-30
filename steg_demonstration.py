@@ -1,6 +1,6 @@
 """
-This program can take a 24bmp image and hide a txt message 
-inside it using the LSB algorithm or take a setgo-image 
+This program can take a 24bmp image and hide a text message 
+inside it using the LSB algorithm or take a stego-image 
 and extract a hidden message.
 """
 
@@ -84,6 +84,7 @@ def change_lsb(pixel_list, message):
                 # subtract 1 from rgb value
                 new_rgb.append(rgb[i] - 1)
                 binary_message.pop(0)
+                
 
         # store the pixel in list
         new_pixels.append(list(new_rgb))
@@ -169,6 +170,8 @@ if encode:
         msg_len = len(binary_msg)
         required_pxls = find_pixels_needed(msg_len) + 5  # five extra pixel used to store length of the message  
         if len(original_pxls) < required_pxls:
+            print("The message is too long to hide!")
+        elif msg_len > 32767:
             print("The message is too long to hide!")
         else:
             # convert length of message to binary, pad it out to 15 digits
