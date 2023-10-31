@@ -74,17 +74,10 @@ def change_lsb(pixel_list, message):
                 new_rgb.append(rgb[i])
                 binary_message.pop(0)
                 continue
-
-            elif binary_message[0] == 1:
+            else:
                 # add 1 to rgb value
                 new_rgb.append(rgb[i] + 1)
-                binary_message.pop(0)
-
-            elif binary_message[0] == 0:
-                # subtract 1 from rgb value
-                new_rgb.append(rgb[i] - 1)
-                binary_message.pop(0)
-                
+                binary_message.pop(0)         
 
         # store the pixel in list
         new_pixels.append(list(new_rgb))

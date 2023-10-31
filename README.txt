@@ -1,6 +1,8 @@
 Project: 
 Steg Demonstration
 
+Authors: CS808 Group L
+
 Description:
 This is a project that demonstrates 24 bit bmp steganography. 
 Users can decide whether to use the program for encoding or decoding
